@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Body and Soul | Massage Therapy, Gisborne</title>
+<meta name="description" content="Remedial, relaxation and hot stone massage in central Gisborne. Body and Soul at the Poverty Bay Club, 38 Childers Road. Call 027 416 9716 to book.">
+<meta property="og:title" content="Body and Soul | Massage Therapy, Gisborne">
+<meta property="og:description" content="Remedial, relaxation and hot stone massage at the Poverty Bay Club, central Gisborne. Call 027 416 9716 to book.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1200&auto=format&fit=crop">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2322332b'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='%23c9a227' text-anchor='middle'%3EBS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#22332b;
+  --ink-soft:#2e453a;
+  --pine:#375445;
+  --clay:#b5654a;
+  --clay-deep:#9c5038;
+  --clay-dark:#84422e;
+  --bone:#f2f3ec;
+  --bone-deep:#e9ebe0;
+  --line:rgba(34,51,43,.14);
+  --line-light:rgba(242,243,236,.22);
+  --text:#33423a;
+  --text-soft:#5c6b62;
+  --text-light:#cfd8d0;
+  --radius:14px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+img{image-orientation:from-image;max-width:100%}
+body{
+  font-family:'Mulish',sans-serif;
+  color:var(--text);
+  background:var(--bone);
+  line-height:1.7;
+  font-size:16px;
+  overflow-x:hidden;
+}
+::selection{background:var(--clay);color:#fff}
+h1,h2,h3,.display{font-family:'Marcellus',serif;font-weight:400;color:var(--ink);line-height:1.15}
+a{color:inherit}
+
+/* ---------- opening animation ---------- */
+#veil{position:fixed;inset:0;background:var(--ink);z-index:200;display:flex;align-items:center;justify-content:center;transition:opacity .8s var(--ease),visibility .8s}
+#veil .veil-word{font-family:'Marcellus',serif;color:var(--bone);font-size:1.6rem;letter-spacing:.14em;opacity:0;animation:veilIn .9s var(--ease) .15s forwards}
+#veil.gone{opacity:0;visibility:hidden}
+@keyframes veilIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---------- nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(242,243,236,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav{max-width:1160px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:'Marcellus',serif;font-size:1.25rem;color:var(--ink);text-decoration:none;letter-spacing:.02em;white-space:nowrap}
+.brand span{color:var(--clay)}
+.nav-links{display:flex;align-items:center;gap:26px;list-style:none}
+.nav-links a{text-decoration:none;font-size:.95rem;font-weight:600;color:var(--ink-soft);transition:color .25s}
+.nav-links a:hover{color:var(--clay-deep)}
+.nav-call{
+  display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;line-height:1;
+  background:var(--ink);color:var(--bone);border-radius:999px;text-decoration:none;font-weight:700;font-size:.9rem;
+  transition:background .25s,transform .25s;white-space:nowrap;
+}
+.nav-call:hover{background:var(--clay-deep)}
+.nav-call:active{transform:scale(.98)}
+.nav-call svg{flex:none}
+#navToggle{display:none;background:none;border:none;cursor:pointer;padding:10px;color:var(--ink)}
+#mobileMenu{display:none}
+@media(max-width:860px){
+  .nav-links{display:none}
+  #navToggle{display:block}
+  #mobileMenu{display:none;position:fixed;top:68px;left:0;right:0;background:var(--bone);border-bottom:1px solid var(--line);padding:12px 24px 20px;z-index:99}
+  #mobileMenu.open{display:block}
+  #mobileMenu a{display:block;padding:14px 4px;text-decoration:none;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line);font-size:1.05rem}
+  #mobileMenu a:last-child{border-bottom:none}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100dvh;display:flex;align-items:center;
+  background:var(--ink);overflow:hidden;
+}
+.hero-slides{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease}
+.hero-slide.on{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04)}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(34,51,43,.62) 0%,rgba(34,51,43,.5) 45%,rgba(34,51,43,.78) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:1160px;margin:0 auto;padding:120px 24px 80px;width:100%}
+.hero-eyebrow{
+  display:inline-block;color:var(--text-light);font-size:.8rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px;
+}
+.hero h1{
+  color:#fdfdf9;font-size:clamp(2.4rem,6vw,4.1rem);max-width:15ch;margin-bottom:20px;
+}
+.hero-sub{color:var(--text-light);font-size:1.1rem;max-width:44ch;margin-bottom:32px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:0 28px;border-radius:999px;text-decoration:none;
+  font-weight:700;font-size:1rem;line-height:1;transition:transform .25s var(--ease),background .25s,color .25s;
+}
+.btn:active{transform:scale(.98)}
+.btn-clay{background:var(--clay-deep);color:#fff}
+.btn-clay:hover{background:var(--clay-dark)}
+.btn-ghost{background:rgba(242,243,236,.12);color:#fdfdf9;border:1px solid rgba(242,243,236,.4);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(242,243,236,.22)}
+.hero-quote{
+  max-width:430px;background:rgba(34,51,43,.35);border:1px solid var(--line-light);
+  border-radius:var(--radius);padding:18px 22px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.hq-stars{color:#e5b83c;font-size:.85rem;letter-spacing:2px;margin-bottom:6px}
+.hq-text{color:#eef1e9;font-size:.95rem;min-height:3.2em;transition:opacity .5s}
+.hq-name{color:var(--text-light);font-size:.82rem;font-weight:600;margin-top:8px}
+.hq-badge{color:rgba(207,216,208,.75);font-size:.72rem;margin-top:6px}
+
+/* ---------- shared section shell ---------- */
+section{padding:96px 0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.sec-head{max-width:640px;margin-bottom:52px}
+.sec-head h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:14px}
+.sec-head p{color:var(--text-soft);font-size:1.05rem}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.seen{opacity:1;transform:none}
+
+/* ---------- services ---------- */
+#services{background:var(--bone);padding-top:110px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.svc-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+  display:flex;flex-direction:column;
+}
+.svc-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px -18px rgba(34,51,43,.35)}
+.svc-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:saturate(.82) contrast(1.04)}
+.svc-body{padding:22px 24px 26px}
+.svc-label{
+  display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--clay-deep);margin-bottom:10px;
+}
+.svc-label svg{flex:none}
+.svc-body h3{font-size:1.3rem;margin-bottom:8px}
+.svc-body p{color:var(--text-soft);font-size:.95rem}
+
+/* ---------- about ---------- */
+#about{background:var(--ink);padding:110px 0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-photo{position:relative}
+.about-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius);display:block;filter:saturate(.82) contrast(1.04)}
+.about-tag{
+  position:absolute;left:-12px;bottom:-12px;background:var(--clay-deep);color:#fff;
+  font-family:'Marcellus',serif;font-size:1rem;padding:12px 20px;border-radius:var(--radius);
+}
+.about-copy h2{color:#fdfdf9;font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:18px}
+.about-copy p{color:var(--text-light);margin-bottom:16px}
+.about-list{list-style:none;margin-top:26px;display:grid;gap:14px}
+.about-list li{display:flex;gap:12px;align-items:flex-start;color:#eef1e9;font-weight:600}
+.about-list svg{flex:none;margin-top:3px;color:var(--clay)}
+
+/* ---------- crew ---------- */
+#therapist{background:var(--bone-deep)}
+.crew-card{
+  display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:40px 44px;max-width:760px;
+}
+.avatar{
+  width:110px;height:110px;border-radius:50%;background:var(--ink);color:var(--bone);
+  display:flex;align-items:center;justify-content:center;font-family:'Marcellus',serif;
+  font-size:2.2rem;border:3px solid var(--clay);flex:none;
+}
+.crew-role{color:var(--clay-deep);font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.crew-card h3{font-size:1.6rem;margin-bottom:10px}
+.crew-card p{color:var(--text-soft);font-size:.98rem}
+
+/* ---------- reviews ---------- */
+#reviews{background:var(--bone)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:40px}
+.rev-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.rev-stars{color:#e5b83c;letter-spacing:2px;font-size:.9rem;margin-bottom:12px}
+.rev-card blockquote{font-size:.98rem;color:var(--text);margin-bottom:16px}
+.rev-card figcaption{font-weight:700;color:var(--ink);font-size:.9rem}
+.rev-card .rev-where{display:block;font-weight:400;color:var(--text-soft);font-size:.82rem}
+.rev-note{color:var(--text-soft);font-size:.85rem;margin-bottom:26px}
+.btn-dark{background:var(--ink);color:var(--bone)}
+.btn-dark:hover{background:var(--pine)}
+
+/* ---------- review banner ---------- */
+#review-banner{background:var(--pine);padding:70px 0}
+.banner-flex{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.banner-flex h2{color:#fdfdf9;font-size:clamp(1.6rem,3.4vw,2.2rem);max-width:22ch}
+.banner-flex p{color:var(--text-light);margin-top:8px;max-width:46ch}
+
+/* ---------- contact ---------- */
+#contact{background:var(--ink);padding:110px 0}
+#contact .sec-head h2{color:#fdfdf9}
+#contact .sec-head p{color:var(--text-light)}
+.contact-card{
+  display:grid;grid-template-columns:1fr 1fr;background:#fdfdf9;border-radius:var(--radius);
+  overflow:hidden;max-width:1120px;margin:0 auto;
+}
+.contact-map iframe{width:100%;height:100%;min-height:460px;border:0;display:block}
+.contact-info{padding:44px 46px;display:flex;flex-direction:column;gap:0}
+.contact-info .btn{width:100%;margin-bottom:14px}
+.c-rows{margin-top:22px;display:grid;gap:16px}
+.c-row{display:flex;gap:14px;align-items:flex-start;font-size:.95rem;color:var(--text)}
+.c-row svg{flex:none;color:var(--clay-deep);margin-top:2px}
+.c-row strong{display:block;color:var(--ink);font-size:.85rem;letter-spacing:.04em;text-transform:uppercase}
+.c-row a{text-decoration:none;color:var(--text)}
+.c-row a:hover{color:var(--clay-deep)}
+.hours{display:grid;grid-template-columns:auto auto;gap:2px 18px;font-size:.92rem}
+.socials{display:flex;gap:12px;margin-top:26px}
+.socials a{
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;color:var(--ink);
+  transition:background .25s,color .25s;
+}
+.socials a:hover{background:var(--ink);color:var(--bone)}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);border-top:1px solid rgba(242,243,236,.12);padding:44px 0}
+.foot-flex{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-brand{font-family:'Marcellus',serif;color:var(--bone);font-size:1.15rem;text-decoration:none}
+.foot-brand span{color:var(--clay)}
+.foot-links{display:flex;gap:22px;list-style:none;flex-wrap:wrap}
+.foot-links a{color:var(--text-light);text-decoration:none;font-size:.88rem}
+.foot-links a:hover{color:#fff}
+.foot-social{display:flex;gap:12px}
+.foot-social a{
+  width:40px;height:40px;border-radius:50%;border:1px solid rgba(242,243,236,.25);
+  display:flex;align-items:center;justify-content:center;color:var(--text-light);
+  transition:background .25s,color .25s;
+}
+.foot-social a:hover{background:var(--clay);color:#fff;border-color:var(--clay)}
+.foot-fine{color:rgba(207,216,208,.6);font-size:.8rem;margin-top:26px}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .rev-grid{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr;gap:44px}
+}
+@media(max-width:680px){
+  section{padding:72px 0}
+  .svc-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .contact-card{grid-template-columns:1fr}
+  .contact-map{order:2}
+  .contact-map iframe{min-height:320px}
+  .contact-info{order:1;padding:32px 26px}
+  .crew-card{grid-template-columns:1fr;text-align:center;padding:34px 26px}
+  .avatar{margin:0 auto}
+  .about-tag{left:12px}
+  .hero-inner{padding:110px 24px 64px}
+  .hero-ctas .btn{width:100%}
+  .hero-quote{max-width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="veil" aria-hidden="true"><div class="veil-word">Body and Soul</div></div>
+
+<header>
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="#top">Body <span>and</span> Soul</a>
+    <ul class="nav-links">
+      <li><a href="#services">Treatments</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Find us</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a class="nav-call" href="tel:+64274169716">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        027 416 9716
+      </a>
+      <button id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div id="mobileMenu">
+    <a href="#services">Treatments</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Find us</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <div class="hero-slides" aria-hidden="true">
+      <div class="hero-slide on"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1800&auto=format&fit=crop" alt="Warm oil poured into a therapist's hand before a back massage" fetchpriority="high"></div>
+      <div class="hero-slide"><img src="https://images.unsplash.com/photo-1611073615452-4889cb93422e?q=80&w=1800&auto=format&fit=crop" alt="Therapist working along a client's upper back in a warm room" loading="lazy"></div>
+      <div class="hero-slide"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=1800&auto=format&fit=crop" alt="Hot stones placed along a client's spine during treatment" loading="lazy"></div>
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Gisborne · Poverty Bay Club</p>
+      <h1>Massage that works the knots out, right in town</h1>
+      <p class="hero-sub">Remedial, relaxation and hot stone massage in a quiet room at the Poverty Bay Club on Childers Road.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-clay" href="tel:+64274169716">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call to book
+        </a>
+        <a class="btn btn-ghost" href="#contact">Find the clinic</a>
+      </div>
+      <div class="hero-quote" id="heroQuote">
+        <div class="hq-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="hq-text" id="hqText">My shoulders finally let go. Best hour I have spent on myself in ages.</p>
+        <p class="hq-name" id="hqName">Marie T.</p>
+        <p class="hq-badge">Example review, real Google reviews coming soon</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Treatments</h2>
+        <p>Every session starts with a chat about what your body is doing, then the pressure and style get matched to you. Sessions run 30, 60 or 90 minutes.</p>
+      </div>
+      <div class="svc-grid">
+        <article class="svc-card reveal">
+          <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=900&h=675&auto=format&fit=crop" alt="Gentle head and face massage" loading="lazy" width="900" height="675">
+          <div class="svc-body">
+            <span class="svc-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21C7 17 3 13.5 3 9.5A5.5 5.5 0 0 1 12 5.7 5.5 5.5 0 0 1 21 9.5c0 4-4 7.5-9 11.5z"/></svg>Unwind</span>
+            <h3>Relaxation massage</h3>
+            <p>Slow, flowing full-body work that settles the nervous system. The one to book when stress has moved in and will not leave.</p>
+          </div>
+        </article>
+        <article class="svc-card reveal">
+          <img src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?q=80&w=900&h=675&auto=format&fit=crop" alt="Firm deep tissue work through the shoulders" loading="lazy" width="900" height="675">
+          <div class="svc-body">
+            <span class="svc-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h12M6 12a2 2 0 1 1 0-4h1a2 2 0 0 1 0 4m11 0a2 2 0 1 0 0-4h-1a2 2 0 0 0 0 4M6 12a2 2 0 1 0 0 4h1a2 2 0 0 0 0-4m11 0a2 2 0 1 1 0 4h-1a2 2 0 0 1 0-4"/></svg>Release</span>
+            <h3>Deep tissue massage</h3>
+            <p>Firm, focused pressure into the muscles that actually hold the tension. Expect honest work, not a light rub over the top.</p>
+          </div>
+        </article>
+        <article class="svc-card reveal">
+          <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=900&h=675&auto=format&fit=crop" alt="Remedial massage along the lower back" loading="lazy" width="900" height="675">
+          <div class="svc-body">
+            <span class="svc-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Recover</span>
+            <h3>Remedial massage</h3>
+            <p>Targeted treatment for niggles, old injuries and overworked muscles. Good for gardeners, tradies and weekend sport casualties.</p>
+          </div>
+        </article>
+        <article class="svc-card reveal">
+          <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=900&h=675&auto=format&fit=crop" alt="Hot stones resting along a client's back" loading="lazy" width="900" height="675">
+          <div class="svc-body">
+            <span class="svc-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14a4 4 0 0 0 8 0c0-2-1.5-3.5-4-8-2.5 4.5-4 6-4 8z"/><path d="M12 22a7 7 0 0 0 7-7c0-3-2-5-3-6"/></svg>Warmth</span>
+            <h3>Hot stone massage</h3>
+            <p>Heated stones melt through tight muscle before hands-on work begins. Deep warmth without deep pressure.</p>
+          </div>
+        </article>
+        <article class="svc-card reveal">
+          <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?q=80&w=900&h=675&auto=format&fit=crop" alt="Feet soaking in a warm bowl with flowers before reflexology" loading="lazy" width="900" height="675">
+          <div class="svc-body">
+            <span class="svc-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>Ground</span>
+            <h3>Reflexology and foot massage</h3>
+            <p>Pressure-point work through the feet that eases the whole body. A quiet favourite for people on their feet all day.</p>
+          </div>
+        </article>
+        <article class="svc-card reveal">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=900&h=675&auto=format&fit=crop" alt="Massage oil dripping from a small amber bottle" loading="lazy" width="900" height="675">
+          <div class="svc-body">
+            <span class="svc-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6m0 0c-3 2.5-5 4.5-5 8a5 5 0 0 0 10 0c0-3.5-2-5.5-5-8z"/></svg>Restore</span>
+            <h3>Lymphatic and pregnancy massage</h3>
+            <p>Gentle lymphatic drainage and side-lying prenatal massage, adjusted around whatever stage you are at.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <img src="https://images.unsplash.com/photo-1620733723572-11c53f73a416?q=80&w=1000&h=750&auto=format&fit=crop" alt="Candles, a rolled towel and a diffuser in a calm treatment room" loading="lazy" width="1000" height="750">
+          <span class="about-tag">38 Childers Road</span>
+        </div>
+        <div class="about-copy reveal">
+          <h2>A quiet room in the middle of Gisborne</h2>
+          <p>Body and Soul runs from the Poverty Bay Club on Childers Road, a short walk from the centre of town. One therapist, one treatment room, no rush between clients.</p>
+          <p>You get asked what is going on with your body before anything else. The treatment gets built around that answer, whether it is a sore neck from the desk, a back that seized up on the job, or a head that will not switch off.</p>
+          <ul class="about-list">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Locally owned and operated in Gisborne</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pressure and style matched to you, every visit</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Easy central location with parking close by</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THERAPIST -->
+  <section id="therapist">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Your therapist</h2>
+        <p>One pair of hands the whole way through, so nothing about your body gets lost between appointments.</p>
+      </div>
+      <div class="crew-card reveal">
+        <div class="avatar" aria-hidden="true">S</div>
+        <div>
+          <p class="crew-role">Owner and massage therapist</p>
+          <h3>Shaz</h3>
+          <p>Shaz runs every session at Body and Soul personally, working across relaxation, remedial, hot stone and holistic treatments. Regulars come back because she remembers exactly where the trouble was last time and picks up from there.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>What clients say</h2>
+        <p>Example reviews shown while we connect the live Google feed for Body and Soul.</p>
+      </div>
+      <div class="rev-grid">
+        <figure class="rev-card reveal">
+          <div class="rev-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>My shoulders finally let go. I sit at a desk all week and Shaz found every knot without me saying a word. Best hour I have spent on myself in ages.</blockquote>
+          <figcaption>Marie T.<span class="rev-where">Whataupoko, Gisborne</span></figcaption>
+        </figure>
+        <figure class="rev-card reveal">
+          <div class="rev-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>Did my back in lifting at work and could barely turn my head. Two remedial sessions later I was back on the tools. Firm pressure, no messing about.</blockquote>
+          <figcaption>Grant W.<span class="rev-where">Te Hapara, Gisborne</span></figcaption>
+        </figure>
+        <figure class="rev-card reveal">
+          <div class="rev-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>The hot stone massage is something else. Lovely calm room at the Poverty Bay Club and you never feel rushed out the door. I book a month ahead now.</blockquote>
+          <figcaption>Kelly M.<span class="rev-where">Kaiti, Gisborne</span></figcaption>
+        </figure>
+      </div>
+      <p class="rev-note reveal">These are example reviews awaiting the live feed. The button below goes to the real Google listing.</p>
+      <a class="btn btn-dark reveal" href="https://www.google.com/maps/search/?api=1&query=Body+and+Soul+massage+Poverty+Bay+Club+Gisborne" target="_blank" rel="noopener">See all our Google reviews</a>
+    </div>
+  </section>
+
+  <!-- REVIEW BANNER -->
+  <section id="review-banner">
+    <div class="wrap banner-flex reveal">
+      <div>
+        <h2>Been in for a massage lately?</h2>
+        <p>A short Google review helps other Gisborne locals find the clinic. It takes about a minute.</p>
+      </div>
+      <a class="btn btn-clay" href="https://www.google.com/maps/search/?api=1&query=Body+and+Soul+massage+Poverty+Bay+Club+Gisborne" target="_blank" rel="noopener">Leave a review</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Find the clinic</h2>
+        <p>Inside the Poverty Bay Club on Childers Road, central Gisborne. Call or email to book a time.</p>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-map">
+          <iframe title="Map showing Body and Soul at the Poverty Bay Club, 38 Childers Road, Gisborne" src="https://www.google.com/maps?q=Poverty+Bay+Club,+38+Childers+Road,+Gisborne+4010,+New+Zealand&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <div class="contact-info">
+          <a class="btn btn-clay" href="tel:+64274169716">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Body and Soul
+          </a>
+          <a class="btn btn-dark" data-gmail data-user="shazzi308" data-domain="gmail.com" data-su="Massage%20booking%20enquiry" href="#">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            Email Body and Soul
+          </a>
+          <div class="c-rows">
+            <div class="c-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div><strong>Address</strong>Poverty Bay Club, 38 Childers Road, Gisborne 4010</div>
+            </div>
+            <div class="c-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div><strong>Phone</strong><a href="tel:+64274169716">027 416 9716</a></div>
+            </div>
+            <div class="c-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <div><strong>Hours</strong>
+                <div class="hours">
+                  <span>Mon</span><span>10am to 6pm</span>
+                  <span>Tue</span><span>10am to 5pm</span>
+                  <span>Wed</span><span>10am to 6pm</span>
+                  <span>Thu</span><span>Closed</span>
+                  <span>Fri</span><span>10am to 6pm</span>
+                  <span>Sat and Sun</span><span>Closed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="socials">
+            <a href="https://www.facebook.com/search/top?q=Body%20and%20Soul%20massage%20Gisborne" target="_blank" rel="noopener" aria-label="Find Body and Soul on Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.45-3H13.5V9.1c0-.87.24-1.46 1.5-1.46h1.6V4.94A21 21 0 0 0 14.27 4.8c-2.31 0-3.9 1.41-3.9 4v2.2H8v3h2.37v7z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/explore/search/keyword/?q=body%20and%20soul%20gisborne" target="_blank" rel="noopener" aria-label="Find Body and Soul on Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-flex">
+      <a class="foot-brand" href="#top">Body <span>and</span> Soul</a>
+      <ul class="foot-links">
+        <li><a href="#services">Treatments</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="/terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+      </ul>
+      <div class="foot-social">
+        <a href="https://www.facebook.com/search/top?q=Body%20and%20Soul%20massage%20Gisborne" target="_blank" rel="noopener" aria-label="Find Body and Soul on Facebook">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.45-3H13.5V9.1c0-.87.24-1.46 1.5-1.46h1.6V4.94A21 21 0 0 0 14.27 4.8c-2.31 0-3.9 1.41-3.9 4v2.2H8v3h2.37v7z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/explore/search/keyword/?q=body%20and%20soul%20gisborne" target="_blank" rel="noopener" aria-label="Find Body and Soul on Instagram">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <p class="foot-fine">&copy; 2026 Body and Soul, Gisborne. Massage therapy at the Poverty Bay Club, 38 Childers Road.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* opening veil */
+  var veil=document.getElementById('veil');
+  window.addEventListener('load',function(){
+    setTimeout(function(){veil.classList.add('gone');},reduce?0:900);
+  });
+  setTimeout(function(){veil.classList.add('gone');},2600);
+
+  /* mobile menu */
+  var toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
+  toggle.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');toggle.setAttribute('aria-expanded','false');});});
+
+  /* hero slide rotation */
+  var slides=document.querySelectorAll('.hero-slide'),si=0;
+  if(!reduce&&slides.length>1){
+    setInterval(function(){
+      slides[si].classList.remove('on');
+      si=(si+1)%slides.length;
+      slides[si].classList.add('on');
+    },6000);
+  }
+
+  /* hero review quote rotation (same data as review cards) */
+  var quotes=[
+    {t:'My shoulders finally let go. Best hour I have spent on myself in ages.',n:'Marie T.'},
+    {t:'Two remedial sessions and I was back on the tools. No messing about.',n:'Grant W.'},
+    {t:'The hot stone massage is something else. You never feel rushed out the door.',n:'Kelly M.'}
+  ];
+  var qi=0,qt=document.getElementById('hqText'),qn=document.getElementById('hqName');
+  if(!reduce&&qt){
+    setInterval(function(){
+      qt.style.opacity='0';
+      setTimeout(function(){
+        qi=(qi+1)%quotes.length;
+        qt.textContent=quotes[qi].t;
+        qn.textContent=quotes[qi].n;
+        qt.style.opacity='1';
+      },500);
+    },6500);
+  }
+
+  /* scroll reveals */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  /* gmail compose links */
+  document.querySelectorAll('a[data-gmail]').forEach(function(a){
+    var to=a.getAttribute('data-user')+'@'+a.getAttribute('data-domain');
+    a.href='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(to)+'&su='+(a.getAttribute('data-su')||'')+'&body='+(a.getAttribute('data-body')||'');
+    a.target='_blank';a.rel='noopener';
+  });
+})();
+</script>
+</body>
+</html>
