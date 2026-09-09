@@ -59,8 +59,9 @@ header{
   border-bottom:1px solid var(--line);
 }
 .nav{max-width:1160px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{font-family:'Marcellus',serif;font-size:1.25rem;color:var(--ink);text-decoration:none;letter-spacing:.02em;white-space:nowrap}
-.brand span{color:var(--clay)}
+.brand{display:inline-flex;align-items:center;text-decoration:none;line-height:1;flex:none}
+.brand img{height:46px;width:auto;display:block;object-fit:contain}
+@media (max-width:600px){.brand img{height:34px}}
 .nav-links{display:flex;align-items:center;gap:26px;list-style:none}
 .nav-links a{text-decoration:none;font-size:.95rem;font-weight:600;color:var(--ink-soft);transition:color .25s}
 .nav-links a:hover{color:var(--clay-deep)}
@@ -173,10 +174,10 @@ section{padding:96px 0}
   padding:40px 44px;max-width:760px;
 }
 .avatar{
-  width:110px;height:110px;border-radius:50%;background:var(--ink);color:var(--bone);
-  display:flex;align-items:center;justify-content:center;font-family:'Marcellus',serif;
-  font-size:2.2rem;border:3px solid var(--clay);flex:none;
+  width:210px;aspect-ratio:3/4;border-radius:var(--radius);overflow:hidden;flex:none;
+  background:var(--bone-deep);border:3px solid var(--clay);
 }
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
 .crew-role{color:var(--clay-deep);font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
 .crew-card h3{font-size:1.6rem;margin-bottom:10px}
 .crew-card p{color:var(--text-soft);font-size:.98rem}
@@ -228,8 +229,8 @@ section{padding:96px 0}
 /* ---------- footer ---------- */
 footer{background:var(--ink);border-top:1px solid rgba(242,243,236,.12);padding:44px 0}
 .foot-flex{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.foot-brand{font-family:'Marcellus',serif;color:var(--bone);font-size:1.15rem;text-decoration:none}
-.foot-brand span{color:var(--clay)}
+.foot-brand{display:inline-flex;align-items:center;text-decoration:none;line-height:1}
+.foot-brand img{height:52px;width:auto;display:block;object-fit:contain;opacity:.92}
 .foot-links{display:flex;gap:22px;list-style:none;flex-wrap:wrap}
 .foot-links a{color:var(--text-light);text-decoration:none;font-size:.88rem}
 .foot-links a:hover{color:#fff}
@@ -276,7 +277,7 @@ footer{background:var(--ink);border-top:1px solid rgba(242,243,236,.12);padding:
 
 <header>
   <nav class="nav" aria-label="Main">
-    <a class="brand" href="#top">Body <span>and</span> Soul</a>
+    <a class="brand" href="#top" aria-label="Body and Soul, home"><img src="img/logo.png" alt="Body and Soul, a touch of heaven, Sharyn Raymond" width="1200" height="593"></a>
     <ul class="nav-links">
       <li><a href="#services">Treatments</a></li>
       <li><a href="#about">About</a></li>
@@ -421,7 +422,7 @@ footer{background:var(--ink);border-top:1px solid rgba(242,243,236,.12);padding:
         <p>One pair of hands the whole way through, so nothing about your body gets lost between appointments.</p>
       </div>
       <div class="crew-card reveal">
-        <div class="avatar" aria-hidden="true">S</div>
+        <div class="avatar"><img src="img/sharyn.jpg" alt="Sharyn Raymond, owner and massage therapist at Body and Soul" width="900" height="1200" loading="lazy"></div>
         <div>
           <p class="crew-role">Owner and massage therapist</p>
           <h3>Shaz</h3>
@@ -532,7 +533,7 @@ footer{background:var(--ink);border-top:1px solid rgba(242,243,236,.12);padding:
 <footer>
   <div class="wrap">
     <div class="foot-flex">
-      <a class="foot-brand" href="#top">Body <span>and</span> Soul</a>
+      <a class="foot-brand" href="#top" aria-label="Body and Soul, home"><img src="img/logo-mono.png" alt="Body and Soul" width="1200" height="593" loading="lazy"></a>
       <ul class="foot-links">
         <li><a href="#services">Treatments</a></li>
         <li><a href="#reviews">Reviews</a></li>
